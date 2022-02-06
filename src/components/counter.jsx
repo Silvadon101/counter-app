@@ -5,19 +5,30 @@ class Counter extends Component {
     //?  This includes data for your components
     //? e.g. images, files, etc
 
-    count: 10,
-    imageUrl: 'https://picsum.photos/200'
+    count: 0,
+    // imageUrl: 'https://picsum.photos/200'
 
   };
+
+  // styles = {
+  //   fontSize: 50,
+  //   fontWeight: "bold"
+  // };
 
   render() {
     return (
       <React.Fragment>
-          <img src={this.state.imageUrl} alt="" />
-        <span>{this.formatCount()}</span>
-        <button>Increment</button>
+          {/* <img src={this.state.imageUrl} alt="" /> */}
+        <span className={this.getBadgeClasses()} >{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
       </React.Fragment>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 bg-";
+    classes += this.state.count === 0 ? "warning text-dark" : "primary text-light";
+    return classes;
   }
 
   formatCount(){
