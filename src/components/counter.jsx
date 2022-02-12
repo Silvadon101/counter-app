@@ -5,7 +5,7 @@ class Counter extends Component {
     //?  This includes data for your components
     //? e.g. images, files, etc
 
-    count: 0,
+    count: 24,
     // imageUrl: 'https://picsum.photos/200'
 
   };
