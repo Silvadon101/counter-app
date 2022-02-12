@@ -6,6 +6,7 @@ class Counter extends Component {
     //? e.g. images, files, etc
 
     count: 24,
+    tags: ["fruits", "drinks","coins"]
     // imageUrl: 'https://picsum.photos/200'
 
   };
@@ -21,6 +22,7 @@ class Counter extends Component {
           {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()} >{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>) } </ul>
       </React.Fragment>
     );
   }
