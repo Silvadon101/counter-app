@@ -6,7 +6,7 @@ class Counter extends Component {
     //? e.g. images, files, etc
 
     count: 24,
-    tags: ["fruits", "drinks","coins"]
+    tags: []
     // imageUrl: 'https://picsum.photos/200'
 
   };
@@ -16,27 +16,33 @@ class Counter extends Component {
   //   fontWeight: "bold"
   // };
 
+  renderTags(){
+    if(this.state.tags.length === 0) return <p>There are no tags!</p>;
+    return <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>) } </ul>;
+    }
+
   render() {
     return (
       <React.Fragment>
           {/* <img src={this.state.imageUrl} alt="" /> */}
-        <span className={this.getBadgeClasses()} >{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>{this.state.tags.map(tag => <li key={tag}>{tag}</li>) } </ul>
+        {/* <span className={this.getBadgeClasses()} >{this.formatCount()}</span>
+        <button className="btn btn-secondary btn-sm">Increment</button> */}
+        {this.state.tags.length === 0 && "Please create new tags :D" }
+        { this.renderTags()}
       </React.Fragment>
     );
   }
 
-  getBadgeClasses() {
-    let classes = "badge m-2 bg-";
-    classes += this.state.count === 0 ? "warning text-dark" : "primary text-light";
-    return classes;
-  }
+  // getBadgeClasses() {
+  //   let classes = "badge m-2 bg-";
+  //   classes += this.state.count === 0 ? "warning text-dark" : "primary text-light";
+  //   return classes;
+  // }
 
-  formatCount(){
-      const {count} = this.state;
-      return count === 0 ? <b>Zero</b> : <b>{count}</b>;
-  }
+  // formatCount(){
+  //     const {count} = this.state;
+  //     return count === 0 ? <b>Zero</b> : <b>{count}</b>;
+  // }
 }
 
 export default Counter;
