@@ -22,8 +22,14 @@ class Counter extends Component {
 
   handleIncrement = () => {
     console.log("Increment Clicked", this);
-  }
+    this.setState({ count: this.state.count + 1 });
+  };
 
+  handleDecrement = () =>{
+    console.log("Decrement Clicked", this)
+    this.setState({ count: this.state.count - 1 })
+  };
+  
   // renderTags() {
   //   if (this.state.tags.length === 0) return <p>There are no tags!</p>;
   //   return (
@@ -40,8 +46,15 @@ class Counter extends Component {
       <React.Fragment>
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm">
           Increment
+        </button>
+        <button
+          onClick={this.handleDecrement}
+          className="btn btn-secondary btn-sm m-2">
+          Decrement
         </button>
         {/* {this.state.tags.length === 0 && "Please create new tags :D"}
         {this.renderTags()} */}
