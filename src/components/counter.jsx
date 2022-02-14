@@ -20,8 +20,17 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-  handleIncrement = () => {
-    console.log("Increment Clicked", this);
+
+  /*---------------------------------------------
+    @Silvadon101
+    setState
+    This is a method from the parent React class "Components"
+    ----------------------------------------------
+  */
+
+  handleIncrement = (product) => {
+    // console.log("Increment Clicked", this);
+    console.log(product)
     this.setState({ count: this.state.count + 1 });
   };
 
@@ -29,6 +38,10 @@ class Counter extends Component {
     console.log("Decrement Clicked", this)
     this.setState({ count: this.state.count - 1 })
   };
+
+  // doHandleIncrement = () =>{
+  //   this.handleIncrement({ id: 1})
+  // };
   
   // renderTags() {
   //   if (this.state.tags.length === 0) return <p>There are no tags!</p>;
@@ -43,11 +56,12 @@ class Counter extends Component {
 
   render() {
     return (
+      // *--------"React Fragment" tag creates an empty tag ----------- 
       <React.Fragment>
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={ ()=>this.handleIncrement({ product: "bag" }) }
           className="btn btn-secondary btn-sm">
           Increment
         </button>
