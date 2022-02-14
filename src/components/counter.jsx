@@ -31,13 +31,13 @@ class Counter extends Component {
   handleIncrement = (product) => {
     // console.log("Increment Clicked", this);
     console.log(product)
-    this.setState({ count: this.state.count + 1 });
-  };
+    this.setState({ count: this.state.count + 1 })
+  }
 
   handleDecrement = () =>{
     console.log("Decrement Clicked", this)
     this.setState({ count: this.state.count - 1 })
-  };
+  }
 
   // doHandleIncrement = () =>{
   //   this.handleIncrement({ id: 1})
@@ -61,7 +61,7 @@ class Counter extends Component {
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={ ()=>this.handleIncrement({ product: "bag" }) }
+          onClick={ ()=>this.handleIncrement({ product: "bag", size: 34 }) }
           className="btn btn-secondary btn-sm">
           Increment
         </button>
