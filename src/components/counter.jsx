@@ -5,7 +5,7 @@ class Counter extends Component {
     //?  This includes data for your components
     //? e.g. images, files, etc
 
-    count: 0,
+    value: this.props.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
     // tags: [],
     // imageUrl: 'https://picsum.photos/200'
   };
@@ -31,12 +31,12 @@ class Counter extends Component {
   handleIncrement = (product) => {
     // console.log("Increment Clicked", this);
     console.log(product)
-    this.setState({ count: this.state.count + 1 })
+    this.setState({ value: this.state.value + 1 })
   }
 
   handleDecrement = () =>{
     console.log("Decrement Clicked", this)
-    this.setState({ count: this.state.count - 1 })
+    this.setState({ value: this.state.value - 1 })
   }
 
   // doHandleIncrement = () =>{
@@ -55,14 +55,16 @@ class Counter extends Component {
   // }
 
   render() {
+    console.log(this.props)
     return (
       // *--------"React Fragment" tag creates an empty tag ----------- 
       <React.Fragment>
         <div></div>
+        {this.props.children}
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={ ()=>this.handleIncrement({ product: "bag", size: 34 }) }
+          onClick={ ()=>this.handleIncrement({ product: "bag" }) }
           className={this.getBtnClass()}>
           Increment
         </button>
@@ -80,12 +82,12 @@ class Counter extends Component {
   getBadgeClasses() {
     let classes = "badge m-2 bg-";
     classes +=
-      this.state.count === 0 ? "warning text-dark" : "primary text-light";
+      this.state.value === 0 ? "warning text-dark" : "primary text-light";
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
+    const { value: count } = this.state;
     return count === 0 ? <b>Zero</b> : <b>{count}</b>;
   }
 
