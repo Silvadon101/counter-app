@@ -58,16 +58,17 @@ class Counter extends Component {
     return (
       // *--------"React Fragment" tag creates an empty tag ----------- 
       <React.Fragment>
+        <div></div>
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={ ()=>this.handleIncrement({ product: "bag", size: 34 }) }
-          className="btn btn-secondary btn-sm">
+          className={this.getBtnClass()}>
           Increment
         </button>
         <button
           onClick={this.handleDecrement}
-          className="btn btn-secondary btn-sm m-2">
+          className={this.getBtnClass()}>
           Decrement
         </button>
         {/* {this.state.tags.length === 0 && "Please create new tags :D"}
@@ -86,6 +87,11 @@ class Counter extends Component {
   formatCount() {
     const { count } = this.state;
     return count === 0 ? <b>Zero</b> : <b>{count}</b>;
+  }
+
+  getBtnClass(){
+    let btnClass = "btn btn-secondary btn-sm m-1";
+    return btnClass;
   }
 }
 
