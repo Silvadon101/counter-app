@@ -55,12 +55,10 @@ class Counter extends Component {
   // }
 
   render() {
-    console.log(this.props)
     return (
       // *--------"React Fragment" tag creates an empty tag ----------- 
       <React.Fragment>
         <div></div>
-        <h4>{this.props.id}</h4>
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
