@@ -2,8 +2,21 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    //?  This includes data for your components
-    //? e.g. images, files, etc
+    /* -----------------------------------------------------
+    | State
+    |
+    | //?  This includes data for your components
+    | //? e.g. images, files, etc
+    | // ! state data is local and only accessible via this component
+    | ------------------------------------------------------
+    */
+
+    /* ----------------------------------------
+    | Props
+    |
+    |This read-only data storage stores data for components.
+    | ----------------------------------------
+    */
 
     value: this.props.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
     // tags: [],
@@ -20,29 +33,28 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-
   /*---------------------------------------------
-    @Silvadon101
     setState
+    
     This is a method from the parent React class "Components"
     ----------------------------------------------
   */
 
   handleIncrement = (product) => {
     // console.log("Increment Clicked", this);
-    console.log(product)
-    this.setState({ value: this.state.value + 1 })
-  }
+    console.log(product);
+    this.setState({ value: this.state.value + 1 });
+  };
 
-  handleDecrement = () =>{
-    console.log("Decrement Clicked", this)
-    this.setState({ value: this.state.value - 1 })
-  }
+  handleDecrement = () => {
+    console.log("Decrement Clicked", this);
+    this.setState({ value: this.state.value - 1 });
+  };
 
   // doHandleIncrement = () =>{
   //   this.handleIncrement({ id: 1})
   // };
-  
+
   // renderTags() {
   //   if (this.state.tags.length === 0) return <p>There are no tags!</p>;
   //   return (
@@ -56,21 +68,27 @@ class Counter extends Component {
 
   render() {
     return (
-      // *--------"React Fragment" tag creates an empty tag ----------- 
+      // *--------"React Fragment" tag creates an empty tag -----------
       <React.Fragment>
         <div></div>
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={ ()=>this.handleIncrement({ product: "bag" }) }
-          className={this.getBtnClass()}>
+          onClick={() => this.handleIncrement({ product: "bag" })}
+          className={this.getBtnClass()}
+        >
           Increment
         </button>
-        <button
-          onClick={this.handleDecrement}
-          className={this.getBtnClass()}>
+        <button onClick={this.handleDecrement} className={this.getBtnClass()}>
           Decrement
         </button>
+        <button
+          onClick={this.props.onDelete}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
+        </button>
+
         {/* {this.state.tags.length === 0 && "Please create new tags :D"}
         {this.renderTags()} */}
       </React.Fragment>
@@ -89,7 +107,7 @@ class Counter extends Component {
     return count === 0 ? <b>Zero</b> : <b>{count}</b>;
   }
 
-  getBtnClass(){
+  getBtnClass() {
     let btnClass = "btn btn-secondary btn-sm m-1";
     return btnClass;
   }
