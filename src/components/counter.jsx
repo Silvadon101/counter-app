@@ -18,7 +18,7 @@ class Counter extends Component {
     | ----------------------------------------
     */
 
-    value: this.props.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
+    value: this.props.counter.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
     // tags: [],
     // imageUrl: 'https://picsum.photos/200'
   };
@@ -35,7 +35,7 @@ class Counter extends Component {
 
   /*---------------------------------------------
     setState
-    
+
     This is a method from the parent React class "Components"
     ----------------------------------------------
   */
@@ -83,7 +83,7 @@ class Counter extends Component {
           Decrement
         </button>
         <button
-          onClick={this.props.onDelete}
+          onClick={()=>this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete
