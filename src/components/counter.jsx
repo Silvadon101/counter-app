@@ -70,7 +70,25 @@ class Counter extends Component {
   //   );
   // }
 
-  render() {
+    componentDidUpdate(prevProps, prevState){
+        /** ---------------------------------------------
+        * States and Props are checked if they are changed here
+        * via comparing their old ones with the new ones.
+        *------------------------------------------------
+        */
+
+       console.log('prevProps', prevProps)
+       console.log('prevState', prevState)
+        if(prevProps.counter.value !== this.props.counter.value){
+           // ? Ajax call and get new data from server
+        }
+    }
+
+    componentWillUnmount() {
+        console.log("Counter - Unmount")
+    }
+
+    render() {
       console.log('Counter - rendered')
     return (
       // *--------"React Fragment" tag creates an empty tag -----------
