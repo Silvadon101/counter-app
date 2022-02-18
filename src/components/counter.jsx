@@ -71,6 +71,7 @@ class Counter extends Component {
   // }
 
   render() {
+      console.log('Counter - rendered')
     return (
       // *--------"React Fragment" tag creates an empty tag -----------
       <React.Fragment>

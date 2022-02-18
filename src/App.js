@@ -3,7 +3,7 @@ import Navbar from './components/navbar';
 import './App.css';
 import Counters from './components/counters';
 
-class App extends Component{
+class App extends Component {
     state = {
         // -----------------------------------------------------
         // ! state data is local and only accessible via this component
@@ -16,6 +16,15 @@ class App extends Component{
             {id: 4, value: 0, desc: "cool"},
         ],
     };
+
+    constructor() {
+        super()
+        console.log("App - constructor")
+    }
+
+    componentDidMount() {
+        console.log('App - mounted')
+    }
 
     handleIncrement = (counter) => {
         const counters = [...this.state.counters]
@@ -58,11 +67,11 @@ class App extends Component{
         //? this.setState({ counters })
     };
 
-    render()
-    {
+    render() {
+        console.log('App - rendered')
         return (
             <React.Fragment>
-                <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
+                <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
                 <main className="container">
                     <Counters
                         onIncrement={this.handleIncrement}
