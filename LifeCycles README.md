@@ -56,7 +56,7 @@ They Hook certain moments during a lifecycle of a component then do something. .
 ## Update Phase
 
 This occurs when the `state` or `props` (property) of a component changes.\
-The LIFE CYCLE HOOKS that exist here are:
+The **LIFE CYCLE HOOKS** that exist here are:
 
 - render
 
