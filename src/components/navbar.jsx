@@ -1,6 +1,6 @@
 import React, {Component, createContext} from 'react';
 
-const NavBar = (props) => {
+const NavBar = ({totalCounters}) => {
     /**
      * ---------------------------------------
      *  Stateless Functional Component
@@ -15,7 +15,7 @@ const NavBar = (props) => {
         <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar <span
-                    className="badge bg-secondary text-light m-2">{props.totalCounters}</span> </a>
+                    className="badge bg-secondary text-light m-2">{totalCounters}</span> </a>
             </div>
         </nav>)
 
