@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    /* -----------------------------------------------------
+  // state = {
+  /* -----------------------------------------------------
     | State
     |
     | //?  This includes data for your components
@@ -11,17 +11,17 @@ class Counter extends Component {
     | ------------------------------------------------------
     */
 
-    /* ----------------------------------------
+  /* ----------------------------------------
     | Props
     |
     |This read-only data storage stores data for components.
     | ----------------------------------------
     */
 
-    value: this.props.counter.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
-    // tags: [],
-    // imageUrl: 'https://picsum.photos/200'
-  };
+  // value: this.props.counter.value, // *this count refers to the value attribute in "Counters"(counters.jsx)
+  // tags: [],
+  // imageUrl: 'https://picsum.photos/200'
+  // };
 
   // styles = {
   //   fontSize: 50,
@@ -33,23 +33,27 @@ class Counter extends Component {
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
 
-  /*---------------------------------------------
-    setState
+  /**---------------------------------------------
+   * setState
+   *
+   *This is a method from the parent React class "Components"
+   *----------------------------------------------
+   */
 
-    This is a method from the parent React class "Components"
-    ----------------------------------------------
-  */
-
+  /*
   handleIncrement = (product) => {
     // console.log("Increment Clicked", this);
     console.log(product);
     this.setState({ value: this.state.value + 1 });
   };
+*/
 
+  /*
   handleDecrement = () => {
     console.log("Decrement Clicked", this);
     this.setState({ value: this.state.value - 1 });
   };
+*/
 
   // doHandleIncrement = () =>{
   //   this.handleIncrement({ id: 1})
@@ -74,16 +78,19 @@ class Counter extends Component {
         {/* <img src={this.state.imageUrl} alt="" /> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={() => this.handleIncrement({ product: "bag" })}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className={this.getBtnClass()}
         >
           Increment
         </button>
-        <button onClick={this.handleDecrement} className={this.getBtnClass()}>
+        <button
+          onClick={() => this.props.onDecrement(this.props.counter)}
+          className={this.getBtnClass()}
+        >
           Decrement
         </button>
         <button
-          onClick={()=>this.props.onDelete(this.props.counter.id)}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete
@@ -98,12 +105,14 @@ class Counter extends Component {
   getBadgeClasses() {
     let classes = "badge m-2 bg-";
     classes +=
-      this.state.value === 0 ? "warning text-dark" : "primary text-light";
+      this.props.counter.value === 0
+        ? "warning text-dark"
+        : "primary text-light";
     return classes;
   }
 
   formatCount() {
-    const { value: count } = this.state;
+    const { value: count } = this.props.counter;
     return count === 0 ? <b>Zero</b> : <b>{count}</b>;
   }
 
